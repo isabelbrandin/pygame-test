@@ -24,8 +24,13 @@ while not done:
  
     screen.fill(WHITE)
     # --- Drawing code should go here
-    pygame.draw.line(screen, GREEN, [350, 100], [350, 400], 10)
-    pygame.draw.rect(screen, BLUE, [400, 150, 100, 200], 10)
+    for x_offset in range(30, 300, 30):
+        pygame.draw.line(screen, GREEN, [x_offset, 100], [x_offset-10, 90], 2)
+        pygame.draw.line(screen, RED, [x_offset, 90], [x_offset-10, 100], 2)
+        pygame.draw.line(screen, BLUE, [x_offset, 300], [x_offset-10, 290], 2)
+        pygame.draw.line(screen, BLACK, [x_offset, 290], [x_offset-10, 300], 2)
+   
+    pygame.draw.rect(screen, BLUE, [30, 150, 230, 90], 2)
    
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
