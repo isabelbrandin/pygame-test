@@ -1,6 +1,14 @@
 import pygame
 import math
 
+def draw_stick_figure(screen, x, y):
+    pygame.draw.ellipse(screen, BLACK, [10 + x, -10 + y, 80, 80], 0)
+    pygame.draw.line(screen, BLACK, [50 + x, 170 + y], [100 + x, 270 + y], 5)
+    pygame.draw.line(screen, BLACK, [50 + x, 170 + y], [x, 270 + y], 5)
+    pygame.draw.line(screen, BLACK, [50 + x, 170 + y], [50 + x, 70 + y], 5)
+    pygame.draw.line(screen, BLACK, [50 + x, 70 + y], [90 + x, 170 + y], 5)
+    pygame.draw.line(screen, BLACK, [50 + x, 70 + y], [10 + x, 170 + y], 5)
+
 pygame.init()
 
 size = (700, 500)
@@ -8,11 +16,11 @@ screen = pygame.display.set_mode(size)
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-GREEN = (0, 255, 0)
-RED = (255, 0, 0)
-BLUE = (0, 0, 255)
+GREEN = (131, 242, 131)
+RED = (236, 112, 112)
+BLUE = (144, 210, 216)
 GREY = (185, 185, 185)
-LIGHT_PINK = (247, 194, 151)
+LIGHT_ORANGE = (247, 194, 151)
 
 done = False
  
@@ -30,11 +38,13 @@ while not done:
         if event.type == pygame.QUIT: # If user clicked close
             done = True # Flag that we are done so we exit this loop
  
-    screen.fill(BLACK)
+    screen.fill(GREY)
     # --- Drawing code should go here
 
+    draw_stick_figure(screen, 300, 150)
+
     pygame.draw.rect(screen, WHITE, [rect_x, rect_y, 50, 50])
-    pygame.draw.rect(screen, LIGHT_PINK, [rect_x + 10, rect_y + 10, 30, 30])
+    pygame.draw.rect(screen, LIGHT_ORANGE, [rect_x + 10, rect_y + 10, 30, 30])
     
     rect_x += rect_change_x
     rect_y += rect_change_y
@@ -44,11 +54,6 @@ while not done:
     if rect_y > 450 or rect_y < 0:
         rect_change_y = rect_change_y * -1
 
-    for x_offset in range(30, 300, 30):
-        pygame.draw.line(screen, GREEN, [x_offset, 100], [x_offset-10, 90], 2)
-        pygame.draw.line(screen, RED, [x_offset, 90], [x_offset-10, 100], 2)
-        pygame.draw.line(screen, BLUE, [x_offset, 300], [x_offset-10, 290], 2)
-        pygame.draw.line(screen, GREY, [x_offset, 290], [x_offset-10, 300], 2)
    
    
     # --- Go ahead and update the screen with what we've drawn.
