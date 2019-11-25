@@ -2,12 +2,12 @@ import pygame
 import math
 
 def draw_stick_figure(screen, x, y):
-    pygame.draw.ellipse(screen, BLACK, [10 + x, -10 + y, 80, 80], 0)
-    pygame.draw.line(screen, BLACK, [50 + x, 170 + y], [100 + x, 270 + y], 5)
-    pygame.draw.line(screen, BLACK, [50 + x, 170 + y], [x, 270 + y], 5)
-    pygame.draw.line(screen, BLACK, [50 + x, 170 + y], [50 + x, 70 + y], 5)
-    pygame.draw.line(screen, BLACK, [50 + x, 70 + y], [90 + x, 170 + y], 5)
-    pygame.draw.line(screen, BLACK, [50 + x, 70 + y], [10 + x, 170 + y], 5)
+    pygame.draw.ellipse(screen, BLACK, [5 + x, -5 + y, 40, 40], 0)
+    pygame.draw.line(screen, BLACK, [25 + x, 85 + y], [50 + x, 135 + y], 3)
+    pygame.draw.line(screen, BLACK, [25 + x, 85 + y], [x, 135 + y], 3)
+    pygame.draw.line(screen, BLACK, [25 + x, 85 + y], [25 + x, 35 + y], 3)
+    pygame.draw.line(screen, BLACK, [25 + x, 35 + y], [45 + x, 85 + y], 3)
+    pygame.draw.line(screen, BLACK, [25 + x, 35 + y], [5 + x, 85 + y], 3)
 
 pygame.init()
 
@@ -31,17 +31,39 @@ rect_x = 50
 rect_y = 50
 rect_change_x = 5
 rect_change_y = 5
+x_speed = 0
+y_speed = 0
+x_coord = 300
+y_coord = 150
 
 # -------- Main Program Loop -----------
 while not done:
     for event in pygame.event.get(): # User did something
         if event.type == pygame.QUIT: # If user clicked close
             done = True # Flag that we are done so we exit this loop
- 
+        # --- Drawing code should go here
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                x_speed = -3
+            elif event.key == pygame.K_RIGHT:
+                x_speed = 3
+            elif event.key == pygame.K_UP:
+                y_speed = -3
+            elif event.key == pygame.K_DOWN:
+                y_speed = 3
+        
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                x_speed = 0
+            elif event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                y_speed = 0
+    
     screen.fill(GREY)
-    # --- Drawing code should go here
-
-    draw_stick_figure(screen, 300, 150)
+    
+    x_coord += x_speed
+    y_coord += y_speed
+    
+    draw_stick_figure(screen, x_coord, y_coord)
 
     pygame.draw.rect(screen, WHITE, [rect_x, rect_y, 50, 50])
     pygame.draw.rect(screen, LIGHT_ORANGE, [rect_x + 10, rect_y + 10, 30, 30])
