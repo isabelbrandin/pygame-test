@@ -5,9 +5,9 @@ def draw_stick_figure(screen, x, y):
     pygame.draw.ellipse(screen, BLACK, [1 + x, y, 10, 10], 0)
     pygame.draw.line(screen, BLACK, [5 + x, 17 + y], [10 + x, 27 + y], 2)
     pygame.draw.line(screen, BLACK, [5 + x, 17 + y], [x, 27 + y], 2)
-    pygame.draw.line(screen, BLACK, [5 + x, 17 + y], [5 + x, 7 + y], 2)
-    pygame.draw.line(screen, BLACK, [5 + x, 7 + y], [9 + x, 17 + y], 2)
-    pygame.draw.line(screen, BLACK, [5 + x, 7 + y], [1 + x, 17 + y], 2)
+    pygame.draw.line(screen, BLUE, [5 + x, 17 + y], [5 + x, 7 + y], 2)
+    pygame.draw.line(screen, BLUE, [5 + x, 7 + y], [9 + x, 17 + y], 2)
+    pygame.draw.line(screen, BLUE, [5 + x, 7 + y], [1 + x, 17 + y], 2)
 
 pygame.init()
 
@@ -61,9 +61,9 @@ while not done:
     y_coord += y_speed
 
     if x_coord > 686 or x_coord < 5:
-        x_speed = x_speed * 0
+        x_speed = 0
     if y_coord > 470 or y_coord < 7:
-        y_speed = y_speed * 0
+        y_speed = 0
     
     draw_stick_figure(screen, x_coord, y_coord)
    
