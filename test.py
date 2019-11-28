@@ -2,12 +2,12 @@ import pygame
 import math
 
 def draw_stick_figure(screen, x, y):
-    pygame.draw.ellipse(screen, BLACK, [5 + x, -5 + y, 40, 40], 0)
-    pygame.draw.line(screen, BLACK, [25 + x, 85 + y], [50 + x, 135 + y], 3)
-    pygame.draw.line(screen, BLACK, [25 + x, 85 + y], [x, 135 + y], 3)
-    pygame.draw.line(screen, BLACK, [25 + x, 85 + y], [25 + x, 35 + y], 3)
-    pygame.draw.line(screen, BLACK, [25 + x, 35 + y], [45 + x, 85 + y], 3)
-    pygame.draw.line(screen, BLACK, [25 + x, 35 + y], [5 + x, 85 + y], 3)
+    pygame.draw.ellipse(screen, BLACK, [1 + x, y, 10, 10], 0)
+    pygame.draw.line(screen, BLACK, [5 + x, 17 + y], [10 + x, 27 + y], 2)
+    pygame.draw.line(screen, BLACK, [5 + x, 17 + y], [x, 27 + y], 2)
+    pygame.draw.line(screen, BLACK, [5 + x, 17 + y], [5 + x, 7 + y], 2)
+    pygame.draw.line(screen, BLACK, [5 + x, 7 + y], [9 + x, 17 + y], 2)
+    pygame.draw.line(screen, BLACK, [5 + x, 7 + y], [1 + x, 17 + y], 2)
 
 pygame.init()
 
@@ -54,16 +54,18 @@ while not done:
                 x_speed = 0
             elif event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                 y_speed = 0
-    
-    screen.fill(GREY)
+
+    screen.fill(WHITE)
     
     x_coord += x_speed
     y_coord += y_speed
+
+    if x_coord > 686 or x_coord < 5:
+        x_speed = x_speed * 0
+    if y_coord > 470 or y_coord < 7:
+        y_speed = y_speed * 0
     
     draw_stick_figure(screen, x_coord, y_coord)
-
-    pygame.draw.rect(screen, GREEN, [0, 400, 700, 400], 0)
-
    
    
     # --- Go ahead and update the screen with what we've drawn.
