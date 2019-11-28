@@ -67,9 +67,8 @@ while not done:
    
     pygame.draw.rect(screen, BLACK, [100, 100, 500, 300], 5)
 
-    if x_coord > 586 or x_coord < 105:
+    if x_coord > 586 or x_coord < 105 or y_coord > 370 or y_coord < 100:
         x_coord = 350
-    if y_coord > 370 or y_coord < 100:
         y_coord = 250
    
     # --- Go ahead and update the screen with what we've drawn.
