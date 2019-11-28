@@ -24,7 +24,6 @@ LIGHT_ORANGE = (247, 194, 151)
 
 done = False
  
-# Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
 x_speed = 0
@@ -34,11 +33,10 @@ y_coord = 265
 
 # -------- Main Program Loop -----------
 while not done:
-    for event in pygame.event.get(): # User did something
-        if event.type == pygame.QUIT: # If user clicked close
-            done = True # Flag that we are done so we exit this loop
+    for event in pygame.event.get(): 
+        if event.type == pygame.QUIT: 
+            done = True 
        
-        # --- Drawing code should go here
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 x_speed = -3
